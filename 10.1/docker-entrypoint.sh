@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+#check if k8s secret is here
+if [ -f /etc/secret-volume/mysql-config ]; then
+  source /etc/secret-volume/mysql-config
+fi
+
 # if command starts with an option, prepend mysqld
 if [ "${1:0:1}" = '-' ]; then
 	set -- mysqld "$@"
@@ -101,4 +106,4 @@ if [ "$1" = 'mysqld' ]; then
 	chown -R mysql:mysql "$DATADIR"
 fi
 
-exec "$@" --user=mysql
+exec "$@"
