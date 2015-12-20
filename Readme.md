@@ -5,7 +5,7 @@ Just a small mariadb powered with alpine linux optimized for k8s
 ##Kubernetes
 
 ### PO
-```json
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -30,7 +30,7 @@ kind: Secret
 metadata:
   name: mysql-secret-1
 data:
-  mysql-root-password: base64(Config)
+  mysql-config: base64(Config)
 ```
 
 ###config
