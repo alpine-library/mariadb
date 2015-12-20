@@ -20,23 +20,13 @@ spec:
   volumes:
     - name: secret-volume
       secret:
-        secretName: mysql-secret-1
+        secretName: mariadb-1
 ```
 
 ### Secret
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: mysql-secret-1
-data:
-  mysql-config: base64(Config)
-```
 
-###config
-```
-MYSQL_ROOT_PASSWORD = PASSWORD_DIOJAZIODJZAODIA
-MYSQL_USER      = ME        <-  (OPTION)
-MYSQL_PASSWORD  = PWD       <-  (OPTION)
-MYSQL_DATABASE  = MYDB      <-  (OPTION)
+For generate k8s secret just use 
+
+```bash
+./gen_k8s_secret.sh -n mariadb-1 -P $(openssl rand -base64 32)
 ```

@@ -33,7 +33,7 @@ for version in "${versions[@]}"; do
 	for va in "${versionAliases[@]}"; do
     echo "TAG image $ID -> $namespace/$name:$va"
     docker tag -f $ID $namespace/$name:$va
-    if [ $PUSH_IMAGE ]; then
+    if [ $DOCKER_PUSH ]; then
     echo "PUSH image $ID -> $namespace/$name:$va"
     docker push $namespace/$name:$va
     fi
